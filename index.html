@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="text-align:center;">
+<h1>This is Gabor's playground for stuff</h1>
+<p>hereg goes an ad preview</p>
+<iframe
+        src="https://www.facebook.com/ads/api/preview_iframe.php?d=AQIV2C-6YPp6dewm18eHXfX5lYTebV1GL1GWmnUL6U0YHCSo0XRwvxhaNfs3LPhXJ48tU4s_HLK89nSkyZBk8MajXsG784Y-ezIAk2-ltxcEYBrsabPwsU-d0Cc3MvtQu0RCCk207AI1sziVjfciXOu7W0DR_kRJf6dR9pXuYpwPE3M4Iwy6-AFbNJXUjEz5NrpnFuDKAUqYVvofzQf75CiQ417kcV8dyJnaUJDShdUletAr03KHXRo_RPm4NSLDe-uzlCCtunzQgXymc6MNLsBd6d5nQzIWJ_wp_BPuvjiOcWBMp6KddSZYkzWsLASWmWBhiatAQFHFqFKYZiCAa9a6&t=AQL1xntUkdNLhGr8"
+        width="540"
+        height="690"
+        scrolling="yes"
+        style="border: none;">
+</iframe>
+
+<div>
+    <p>This will be a preview on hover</p>
+    <p>Move the mouse over the text below:</p>
+
+    <div class="tooltip">Hover over me
+        <div class="tooltiptext">
+            <iframe
+                    src="https://www.facebook.com/ads/api/preview_iframe.php?d=AQIV2C-6YPp6dewm18eHXfX5lYTebV1GL1GWmnUL6U0YHCSo0XRwvxhaNfs3LPhXJ48tU4s_HLK89nSkyZBk8MajXsG784Y-ezIAk2-ltxcEYBrsabPwsU-d0Cc3MvtQu0RCCk207AI1sziVjfciXOu7W0DR_kRJf6dR9pXuYpwPE3M4Iwy6-AFbNJXUjEz5NrpnFuDKAUqYVvofzQf75CiQ417kcV8dyJnaUJDShdUletAr03KHXRo_RPm4NSLDe-uzlCCtunzQgXymc6MNLsBd6d5nQzIWJ_wp_BPuvjiOcWBMp6KddSZYkzWsLASWmWBhiatAQFHFqFKYZiCAa9a6&t=AQL1xntUkdNLhGr8"
+                    width="540"
+                    height="690"
+                    scrolling="yes"
+                    style="border: none;">
+            </iframe>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
