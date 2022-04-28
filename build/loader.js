@@ -26,7 +26,7 @@
 
   const script = document.createElement('script')
   script.id = id
-  script.src = 'https://gm-tracking-js.ngrok.io/main.js'
+  script.src = 'https://gabor-recart.github.io/build/main.js'
   script.async = true
   document.body.appendChild(script)
 })(document)
