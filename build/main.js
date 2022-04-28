@@ -1,4 +1,4 @@
-/*! RECART 89f1010 2022-04-28T15:27:01.842Z */
+/*! RECART 89f1010 2022-04-28T15:50:11.853Z */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
@@ -7401,8 +7401,8 @@ class GMCore {
         }
 
         const recartLanding = document.querySelector('#recart-landing');
-        console.log(recartLanding);
-        const recartLoader = document.querySelector('#recart-loader'); // try {
+        console.log(recartLanding); // const recartLoader = document.querySelector('#recart-loader')
+        // try {
         //   render(
         //     <>
         //       <p>EZ IDE BE LETT RAKVA</p>
@@ -7422,7 +7422,6 @@ class GMCore {
               ...moduleCtx
             }, popup.id))
           }), document.querySelector('#recart-landing'));
-          document.querySelector('#recart-loading').style.display = "none";
         } catch (error) {
           _logger__WEBPACK_IMPORTED_MODULE_15__["default"].error('Popup error', {
             error,
@@ -7438,6 +7437,7 @@ class GMCore {
         }
 
         _utils__WEBPACK_IMPORTED_MODULE_9__.emitBrowserEvent('RecartVariablesLoaded', _config__WEBPACK_IMPORTED_MODULE_11__["default"].variables);
+        document.querySelector('#recart-loading').style.display = "none";
       }
     });
   }
