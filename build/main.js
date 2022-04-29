@@ -1,4 +1,4 @@
-/*! RECART 89f1010 2022-04-28T15:50:11.853Z */
+/*! RECART 89f1010 2022-04-29T09:01:14.383Z */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
@@ -7244,8 +7244,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _core_session__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(284);
 /* harmony import */ var _modules_messengerLinkModifier__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(446);
 /* harmony import */ var _modules_popup_popup_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(452);
-/* harmony import */ var _modules_klaviyo_tracking__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(486);
-/* harmony import */ var _modules_omnisend_tracking__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(487);
+/* harmony import */ var _modules_klaviyo_tracking__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(490);
+/* harmony import */ var _modules_omnisend_tracking__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(491);
 /* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(456);
 
 /* jshint undef: true, unused: true, browser: true */
@@ -7433,11 +7433,10 @@ class GMCore {
         _modules_omnisend_tracking__WEBPACK_IMPORTED_MODULE_22__.init(moduleCtx);
 
         if (lodash_get__WEBPACK_IMPORTED_MODULE_4___default()(settings, 'integrations.attentive.isEnabled', false)) {
-          __webpack_require__.e(/* import() | attentive */ 0).then(__webpack_require__.bind(__webpack_require__, 490)).then(module => module.default(moduleCtx));
+          __webpack_require__.e(/* import() | attentive */ 0).then(__webpack_require__.bind(__webpack_require__, 494)).then(module => module.default(moduleCtx));
         }
 
         _utils__WEBPACK_IMPORTED_MODULE_9__.emitBrowserEvent('RecartVariablesLoaded', _config__WEBPACK_IMPORTED_MODULE_11__["default"].variables);
-        document.querySelector('#recart-loading').style.display = "none";
       }
     });
   }
@@ -25991,11 +25990,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tracking_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(277);
 /* harmony import */ var _popup_container_popup_container_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(458);
 /* harmony import */ var _popup_utils_storage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(463);
-/* harmony import */ var _popup_utils_utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(473);
-/* harmony import */ var _components_email_step_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(474);
-/* harmony import */ var _components_messenger_step_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(478);
-/* harmony import */ var _components_sms_step_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(480);
-/* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(456);
+/* harmony import */ var _popup_utils_use_popup_visible__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(473);
+/* harmony import */ var _popup_utils_utils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(477);
+/* harmony import */ var _components_email_step_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(478);
+/* harmony import */ var _components_messenger_step_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(482);
+/* harmony import */ var _components_sms_step_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(484);
+/* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(456);
+
 
 
 
@@ -26025,6 +26026,8 @@ function isSMSPopup(popup) {
 }
 
 function Popup(props) {
+  var _props$settings$fb_me, _props$settings$fb_me2, _props$settings$sms_s;
+
   const [activeStep, setActiveStep] = (0,preact_hooks__WEBPACK_IMPORTED_MODULE_2__.useState)(0);
   const [SMSInputCompeted, setSMSInputCompeted] = (0,preact_hooks__WEBPACK_IMPORTED_MODULE_2__.useState)(false);
   const containerRef = (0,preact_hooks__WEBPACK_IMPORTED_MODULE_2__.useRef)();
@@ -26033,7 +26036,7 @@ function Popup(props) {
   (0,preact_hooks__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     const key = (0,_popup_utils_storage__WEBPACK_IMPORTED_MODULE_8__.getOptinContextKey)(props.popup.id);
 
-    if (isSMSPopup(props.popup) && (0,_popup_utils_utils__WEBPACK_IMPORTED_MODULE_9__.isMobile)(props.popup)) {
+    if (isSMSPopup(props.popup) && (0,_popup_utils_utils__WEBPACK_IMPORTED_MODULE_10__.isMobile)(props.popup)) {
       if (window.sessionStorage.getItem(key)) {
         var _window$sessionStorag;
 
@@ -26041,14 +26044,16 @@ function Popup(props) {
       } else {
         const saveOptinContext = async () => {
           try {
+            var _optinContextResponse, _optinContextResponse2, _optinContextResponse3, _optinContextResponse4;
+
             const optinContextResponse = await _tracking_api__WEBPACK_IMPORTED_MODULE_6__.postOptinContext({
               sessionId: props.sessionId,
               shopperId: props.shopperId,
               optinToolId: props.popup.id,
               userAgent: navigator.userAgent
             });
-            window.sessionStorage.setItem(key, optinContextResponse.data.id);
-            setOptinContextId(optinContextResponse.data.id);
+            window.sessionStorage.setItem(key, (_optinContextResponse = optinContextResponse === null || optinContextResponse === void 0 ? void 0 : (_optinContextResponse2 = optinContextResponse.data) === null || _optinContextResponse2 === void 0 ? void 0 : _optinContextResponse2.id) !== null && _optinContextResponse !== void 0 ? _optinContextResponse : '');
+            setOptinContextId((_optinContextResponse3 = optinContextResponse === null || optinContextResponse === void 0 ? void 0 : (_optinContextResponse4 = optinContextResponse.data) === null || _optinContextResponse4 === void 0 ? void 0 : _optinContextResponse4.id) !== null && _optinContextResponse3 !== void 0 ? _optinContextResponse3 : '');
           } catch (error) {
             _logger__WEBPACK_IMPORTED_MODULE_4__["default"].error('Failed to create optin context', {
               error,
@@ -26068,17 +26073,19 @@ function Popup(props) {
       optinToolDevices: props.popup.devices,
       optinToolChannels: props.popup.channels
     }));
-  }, [props.popup.id]); // const { visible } = usePopupVisible({
-  //   popup: props.popup,
-  //   fbPageConfig: props.settings.fb_messenger?.config ?? {},
-  //   sentryLogger: props.sentryLogger,
-  //   siteId: props.siteId,
-  //   siteName: props.settings.site_name,
-  //   phoneNumber: props.settings.sms_settings?.phoneNumber,
-  //   optinContextId
-  // })
+  }, [props.popup.id]);
+  const {
+    visible
+  } = (0,_popup_utils_use_popup_visible__WEBPACK_IMPORTED_MODULE_9__.usePopupVisible)({
+    popup: props.popup,
+    fbPageConfig: (_props$settings$fb_me = (_props$settings$fb_me2 = props.settings.fb_messenger) === null || _props$settings$fb_me2 === void 0 ? void 0 : _props$settings$fb_me2.config) !== null && _props$settings$fb_me !== void 0 ? _props$settings$fb_me : {},
+    sentryLogger: props.sentryLogger,
+    siteId: props.siteId,
+    siteName: props.settings.site_name,
+    phoneNumber: (_props$settings$sms_s = props.settings.sms_settings) === null || _props$settings$sms_s === void 0 ? void 0 : _props$settings$sms_s.phoneNumber,
+    optinContextId
+  }); // const visible = true
 
-  const visible = true;
   (0,preact_hooks__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
     const localStorageKeys = (0,_popup_utils_storage__WEBPACK_IMPORTED_MODULE_8__.getPopupLocalStorageKeys)(props.popup.id);
     const isEmailStepCompleted = local_storage_fallback__WEBPACK_IMPORTED_MODULE_1__["default"].getItem(localStorageKeys.emailStepCompleted);
@@ -26114,20 +26121,20 @@ function Popup(props) {
     return null;
   }
 
-  return (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_popup_container_popup_container_component__WEBPACK_IMPORTED_MODULE_7__.PopupContainer, {
+  return (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_popup_container_popup_container_component__WEBPACK_IMPORTED_MODULE_7__.PopupContainer, {
     ref: containerRef,
     metricCollector: metricCollector,
     defaultVisible: visible,
     templateData: props.settings,
     popup: props.popup,
-    children: (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsxs)(_components_stepper_stepper_component__WEBPACK_IMPORTED_MODULE_3__.Stepper, {
+    children: (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)(_components_stepper_stepper_component__WEBPACK_IMPORTED_MODULE_3__.Stepper, {
       current: activeStep,
-      children: [isEmailPopup(props.popup) && (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_email_step_component__WEBPACK_IMPORTED_MODULE_10__.EmailStep, {
+      children: [isEmailPopup(props.popup) && (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_email_step_component__WEBPACK_IMPORTED_MODULE_11__.EmailStep, {
         popupId: props.popup.id,
         popupSettings: props.popup.settings,
         pixel: props.pixel,
         onCTAClick: handleEmailCTAClick
-      }), isMessengerPopup(props.popup) && (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_messenger_step_component__WEBPACK_IMPORTED_MODULE_11__.MessengerStep, {
+      }), isMessengerPopup(props.popup) && (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_messenger_step_component__WEBPACK_IMPORTED_MODULE_12__.MessengerStep, {
         popup: props.popup,
         settings: props.settings,
         onCTAClick: handleMessengerCTAClick,
@@ -26135,7 +26142,7 @@ function Popup(props) {
         sessionId: props.sessionId,
         shopperId: props.shopperId,
         sourceId: props.popup.id
-      }), isSMSPopup(props.popup) && (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__.jsx)(_components_sms_step_component__WEBPACK_IMPORTED_MODULE_12__.SMSStep, {
+      }), isSMSPopup(props.popup) && (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_components_sms_step_component__WEBPACK_IMPORTED_MODULE_13__.SMSStep, {
         popupId: props.popup.id,
         sessionId: props.sessionId,
         shopperId: props.shopperId,
@@ -26493,6 +26500,8 @@ const PopupContainer = (0,preact_compat__WEBPACK_IMPORTED_MODULE_3__.forwardRef)
   if (!visible) {
     return null;
   }
+
+  document.querySelector('#recart-loading').style.display = 'none';
 
   if (minimized) {
     return (0,preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_12__.jsx)(_popup_components_minimized_popup_component__WEBPACK_IMPORTED_MODULE_8__.MinimizedPopup, {
@@ -27122,6 +27131,306 @@ function useIsImageLoading(url) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "usePopupVisible": () => (/* binding */ usePopupVisible)
+/* harmony export */ });
+/* harmony import */ var _ghostmonitor_gm_frontend_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(273);
+/* harmony import */ var _ghostmonitor_gm_frontend_logger__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_ghostmonitor_gm_frontend_logger__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var local_storage_fallback__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(198);
+/* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(454);
+/* harmony import */ var _country_targeting__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(474);
+/* harmony import */ var _device_support__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(475);
+/* harmony import */ var _storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(463);
+/* harmony import */ var _url_targeting__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(476);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(477);
+
+
+
+
+
+
+
+
+const UTM_SOURCE_RECART = 'utm_source=recart';
+function usePopupVisible(_ref) {
+  let {
+    popup,
+    fbPageConfig,
+    sentryLogger,
+    siteId,
+    siteName,
+    phoneNumber,
+    optinContextId
+  } = _ref;
+  const localStorageKeys = (0,_storage__WEBPACK_IMPORTED_MODULE_5__.getPopupLocalStorageKeys)(popup.id);
+  const logger = (0,preact_hooks__WEBPACK_IMPORTED_MODULE_2__.useRef)();
+  initLogger();
+
+  function initLogger() {
+    const urlParam = '_popup';
+    logger.current = new (_ghostmonitor_gm_frontend_logger__WEBPACK_IMPORTED_MODULE_0___default())();
+    logger.current.addLogger(new _ghostmonitor_gm_frontend_logger__WEBPACK_IMPORTED_MODULE_0__.ConsoleLogger({
+      urlParam
+    }));
+    logger.current.addLogger(sentryLogger);
+    const isDebug = window.location.href.includes(urlParam);
+    logger.current.debug("Init popup ".concat(popup.id), {
+      popup,
+      isDebug
+    });
+  }
+
+  function isPopupVisible() {
+    // Note: inactive optin tools aren't part of the settings but still keep this here for good measure
+    if (popup.status !== 'active') {
+      return false;
+    }
+
+    if (!(0,_device_support__WEBPACK_IMPORTED_MODULE_4__.isSupportedDevice)(popup.devices, window.navigator.userAgent)) {
+      logger.current.debug('Not supported device', {
+        userAgent: window.navigator.userAgent
+      });
+      return false;
+    } // const isMinimizedClosed = !!storage.getItem(localStorageKeys.minimizedClosed)
+    // if (isMinimizedClosed) {
+    //   logger.current.debug('Minimized state has been closed')
+    //   return false
+    // }
+    // const isCtaClicked = !!storage.getItem(localStorageKeys.ctaClicked)
+    // if (isCtaClicked) {
+    //   logger.current.debug('CTA has been clicked')
+    //   return false
+    // }
+    // Do not show popup when user is redirected from Recart conversation
+
+
+    const queryParams = document.location.search;
+
+    if (queryParams.includes(UTM_SOURCE_RECART)) {
+      logger.current.debug('Redirected from Recart conversation');
+      local_storage_fallback__WEBPACK_IMPORTED_MODULE_1__["default"].setItem(localStorageKeys.ctaClicked, '1');
+      return false;
+    }
+
+    return true;
+  }
+
+  function isPopupEnabledForURL() {
+    const {
+      url: urlTargetRules
+    } = popup.settings.displayRules;
+    const currentURL = window.location.toString();
+    const shouldDisplay = (0,_url_targeting__WEBPACK_IMPORTED_MODULE_6__.urlMatchesTargetingRules)(currentURL, urlTargetRules);
+
+    if (!shouldDisplay) {
+      logger.current.debug("URL targeting does not match. URL: ".concat(currentURL));
+      return false;
+    }
+
+    return true;
+  }
+
+  function isPopupEnabledInCountry() {
+    const countryCode = window.sessionStorage.getItem('recart-country-code');
+    const shouldDisplayInCountry = (0,_country_targeting__WEBPACK_IMPORTED_MODULE_3__.countryCodeMatchesTargetingRules)(countryCode, popup.settings.displayRules.location);
+
+    if (!shouldDisplayInCountry) {
+      logger.current.debug("Country targeting does not match. Country: ".concat(countryCode !== null && countryCode !== void 0 ? countryCode : '-'));
+      return false;
+    }
+
+    return true;
+  }
+
+  function isMessengerConfigured() {
+    const {
+      sequenceId
+    } = popup.settings;
+
+    if (!fbPageConfig.isEnabled) {
+      logger.current.debug('FB page is not enabled', {
+        fbPageConfig
+      });
+      return false;
+    }
+
+    if (!fbPageConfig.pageId || !sequenceId) {
+      logger.current.error('Missing m.me URL properties', {
+        siteId,
+        fbPageConfig,
+        sequenceId
+      });
+      return false;
+    }
+
+    return true;
+  }
+
+  function isSMSConfigured() {
+    if (!phoneNumber) {
+      logger.current.debug('phoneNumber not found in settings');
+      return false;
+    }
+
+    if (!siteName) {
+      logger.current.debug('siteName not found in settings');
+      return false;
+    }
+
+    return true;
+  }
+
+  function getPopupVisibility() {
+    if (!isPopupVisible()) {
+      return false;
+    }
+
+    if (!isPopupEnabledForURL()) {
+      return false;
+    }
+
+    if (!isPopupEnabledInCountry()) {
+      return false;
+    }
+
+    if (popup.channels.includes('messenger') && !isMessengerConfigured()) {
+      return false;
+    }
+
+    if (popup.channels.includes('sms')) {
+      if (!isSMSConfigured()) {
+        return false;
+      }
+
+      if ((0,_utils__WEBPACK_IMPORTED_MODULE_7__.isMobile)(popup) && !optinContextId) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  const visible = getPopupVisibility();
+  return {
+    visible
+  };
+}
+
+/***/ }),
+/* 474 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "countryCodeMatchesTargetingRules": () => (/* binding */ countryCodeMatchesTargetingRules)
+/* harmony export */ });
+function countryCodeMatchesTargetingRules(countryCode, countryTargetRule) {
+  if (!countryTargetRule || !countryCode) {
+    return true;
+  }
+
+  if (countryTargetRule.type === 'include') {
+    return countryTargetRule.values.includes(countryCode);
+  } else if (countryTargetRule.type === 'exclude') {
+    return !countryTargetRule.values.includes(countryCode);
+  }
+
+  return false;
+}
+
+/***/ }),
+/* 475 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "isSupportedDevice": () => (/* binding */ isSupportedDevice)
+/* harmony export */ });
+function isSupportedDevice(devices, userAgent) {
+  if (!userAgent) {
+    return false;
+  } // https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent#mobile_tablet_or_desktop
+  // Note: tablet is considered mobile too
+
+
+  const isMobile = userAgent.includes('Mobi') || userAgent.includes('mobi');
+
+  if (devices.includes('mobile') && isMobile) {
+    return true;
+  }
+
+  if (devices.includes('desktop') && !isMobile) {
+    return true;
+  }
+
+  return false;
+}
+
+/***/ }),
+/* 476 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "urlMatchesTargetingRules": () => (/* binding */ urlMatchesTargetingRules)
+/* harmony export */ });
+function evaluateRule(match, url, targetUrl) {
+  switch (match) {
+    case 'exact':
+      return url === targetUrl;
+
+    case 'include':
+      return url.includes(targetUrl);
+
+    case 'regex':
+      {
+        const regexp = new RegExp(targetUrl, 'i');
+        return regexp.test(url);
+      }
+
+    default:
+      return false;
+  }
+}
+
+function urlMatchesTargetingRules(url, urlTargetRule) {
+  if (!urlTargetRule) {
+    return true;
+  }
+
+  let shouldShow = true;
+  let shouldHide = false;
+
+  if (urlTargetRule.include) {
+    const {
+      values,
+      match
+    } = urlTargetRule.include;
+    const matches = values.map(targetUrl => evaluateRule(match, url, targetUrl));
+    shouldShow = matches.some(x => x);
+  }
+
+  if (urlTargetRule.exclude) {
+    const {
+      values,
+      match
+    } = urlTargetRule.exclude;
+    const matches = values.map(targetUrl => evaluateRule(match, url, targetUrl));
+    shouldHide = matches.some(x => x);
+  }
+
+  return shouldShow && !shouldHide;
+}
+
+/***/ }),
+/* 477 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "isDesktop": () => (/* binding */ isDesktop),
 /* harmony export */   "isMobile": () => (/* binding */ isMobile)
 /* harmony export */ });
@@ -27136,7 +27445,7 @@ function isDesktop(popup) {
 }
 
 /***/ }),
-/* 474 */
+/* 478 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27150,11 +27459,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var validator_lib_isEmail__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(285);
 /* harmony import */ var validator_lib_isEmail__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(validator_lib_isEmail__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _components_button_button_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(467);
-/* harmony import */ var _components_input_input_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(475);
+/* harmony import */ var _components_input_input_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(479);
 /* harmony import */ var _popup_utils_custom_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(461);
 /* harmony import */ var _popup_utils_style_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(464);
-/* harmony import */ var _email_step_style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(476);
-/* harmony import */ var _popup_step_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(477);
+/* harmony import */ var _email_step_style_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(480);
+/* harmony import */ var _popup_step_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(481);
 /* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(456);
 
 
@@ -27255,7 +27564,7 @@ function EmailStep(props) {
 }
 
 /***/ }),
-/* 475 */
+/* 479 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27284,7 +27593,7 @@ function Input(_ref) {
 }
 
 /***/ }),
-/* 476 */
+/* 480 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27293,7 +27602,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 477 */
+/* 481 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27377,7 +27686,7 @@ function PopupStep(props) {
 }
 
 /***/ }),
-/* 478 */
+/* 482 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27388,10 +27697,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(459);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_button_button_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(467);
-/* harmony import */ var _popup_utils_channel_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(479);
+/* harmony import */ var _popup_utils_channel_settings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(483);
 /* harmony import */ var _popup_utils_custom_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(461);
 /* harmony import */ var _popup_utils_style_helpers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(464);
-/* harmony import */ var _popup_step_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(477);
+/* harmony import */ var _popup_step_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(481);
 /* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(456);
 
 
@@ -27460,7 +27769,7 @@ function MessengerStep(props) {
 }
 
 /***/ }),
-/* 479 */
+/* 483 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27515,7 +27824,7 @@ function getSMSHref(_ref2) {
 }
 
 /***/ }),
-/* 480 */
+/* 484 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27529,14 +27838,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_isEqual__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_isEqual__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(454);
 /* harmony import */ var _components_button_button_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(467);
-/* harmony import */ var _components_input_input_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(475);
-/* harmony import */ var _popup_utils_channel_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(479);
+/* harmony import */ var _components_input_input_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(479);
+/* harmony import */ var _popup_utils_channel_settings__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(483);
 /* harmony import */ var _popup_utils_custom_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(461);
 /* harmony import */ var _popup_utils_style_helpers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(464);
-/* harmony import */ var _popup_step_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(477);
-/* harmony import */ var _components_select_select_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(481);
-/* harmony import */ var _sms_success_step__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(483);
-/* harmony import */ var _popup_utils_validators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(484);
+/* harmony import */ var _popup_step_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(481);
+/* harmony import */ var _components_select_select_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(485);
+/* harmony import */ var _sms_success_step__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(487);
+/* harmony import */ var _popup_utils_validators__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(488);
 /* harmony import */ var _tracking_api__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(277);
 /* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(456);
 
@@ -27762,7 +28071,7 @@ function SMSStep(props) {
 }
 
 /***/ }),
-/* 481 */
+/* 485 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27774,7 +28083,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var preact_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(454);
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(468);
-/* harmony import */ var _select_style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(482);
+/* harmony import */ var _select_style_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(486);
 /* harmony import */ var preact_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(456);
 
 
@@ -27850,7 +28159,7 @@ function Select(_ref) {
 }
 
 /***/ }),
-/* 482 */
+/* 486 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27859,7 +28168,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /***/ }),
-/* 483 */
+/* 487 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27924,7 +28233,7 @@ function SMSSuccessStep(props) {
 }
 
 /***/ }),
-/* 484 */
+/* 488 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27934,7 +28243,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getCountryCallCode": () => (/* binding */ getCountryCallCode),
 /* harmony export */   "isValidPhoneNumber": () => (/* binding */ isValidPhoneNumber)
 /* harmony export */ });
-/* harmony import */ var validator_lib_isMobilePhone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(485);
+/* harmony import */ var validator_lib_isMobilePhone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(489);
 
 const countryOptions = [{
   name: 'United States',
@@ -27974,7 +28283,7 @@ function isValidPhoneNumber(countryCode, phoneNumber) {
 }
 
 /***/ }),
-/* 485 */
+/* 489 */
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
@@ -28180,7 +28489,7 @@ var locales = Object.keys(phones);
 exports.locales = locales;
 
 /***/ }),
-/* 486 */
+/* 490 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -28289,7 +28598,7 @@ async function init(_ref) {
 }
 
 /***/ }),
-/* 487 */
+/* 491 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
