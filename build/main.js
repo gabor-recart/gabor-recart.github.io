@@ -1,4 +1,4 @@
-/*! RECART 89f1010 2022-04-29T09:01:14.383Z */
+/*! RECART 89f1010 2022-05-02T11:08:55.256Z */
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ([
 /* 0 */,
@@ -29084,7 +29084,8 @@ __webpack_require__.r(__webpack_exports__);
         shopifyCheckoutId: String(shopifyCheckoutId)
       }),
       addCartRecoveryOverlay: () => (0,_utils__WEBPACK_IMPORTED_MODULE_31__.addCartRecoveryOverlay)(),
-      removeCartRecoveryOverlay: () => (0,_utils__WEBPACK_IMPORTED_MODULE_31__.removeCartRecoveryOverlay)()
+      removeCartRecoveryOverlay: () => (0,_utils__WEBPACK_IMPORTED_MODULE_31__.removeCartRecoveryOverlay)(),
+      test: () => console.log('test is viable')
     };
   } catch (error) {
     _logger__WEBPACK_IMPORTED_MODULE_30__["default"].error('Failed to initialize Recart', {
