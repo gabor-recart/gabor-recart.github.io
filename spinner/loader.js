@@ -16,7 +16,7 @@
 
   const link = document.createElement('link')
   link.rel = 'stylesheet'
-  link.href = 'https://gm-tracking-js-gabor.ngrok.io/main.css'
+  link.href = 'https://gabor-recart.github.io/spinner/main.css'
   document.querySelector('#recart-root').shadowRoot.appendChild(link)
 
   const font = document.createElement('link')
@@ -26,7 +26,7 @@
 
   const script = document.createElement('script')
   script.id = id
-  script.src = 'https://gm-tracking-js-gabor.ngrok.io/main.js'
+  script.src = 'https://gabor-recart.github.io/spinner/main.js'
   script.async = true
   document.body.appendChild(script)
 })(document)
