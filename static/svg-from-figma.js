@@ -1,15 +1,13 @@
 ;(function (document) {
-  console.log('svg-from-figm.js start')
-
-  const id = 'recart-loader-div'
+  const id = 'recart-landing-page-loader'
   const loaderDiv = document.getElementById(id)
   if (!loaderDiv) {
-    console.log('could not find div')
+    console.log('could not find recart-landing-page-loader div')
     return
   }
 
-  const htmlTemplate = `  
-  <div id="recart-landing-page-root" style="width: 100vw;position: relative;left: 50% !important;right: 50% !important;margin-left: -50vw;margin-right: -50vw;">
+  const htmlTemplate = `
+  <div style="width: 100vw;position: relative;left: 50% !important;right: 50% !important;margin-left: -50vw;margin-right: -50vw;">
       <svg width="600" height="450" viewBox="0 0 600 450" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin: auto; max-width: 100%">
           <rect x="262" width="76" height="76" rx="4" fill="#E9EFF4"/>
           <rect x="251" y="113" width="97" height="17" rx="4" fill="#E9EFF4"/>
@@ -25,7 +23,6 @@
 
   const scriptTag = document.querySelector('#recart-landing-loader-script')
   const queryParams = scriptTag.src.split('?')[1]
-  console.log(queryParams)
 
   const script = document.createElement('script')
   script.id = id
@@ -33,11 +30,11 @@
   script.async = true
   document.body.appendChild(script)
 
+  // TODO actualize for more themes
   const sectionHeader = document.querySelector('.section-header')
   if (sectionHeader) {
     sectionHeader.style.display = 'none'
   }
 
   loaderDiv.innerHTML = htmlTemplate
-  console.log('svg-from-figma.js finished')
 })(document)
