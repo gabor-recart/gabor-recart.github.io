@@ -25,6 +25,7 @@
 
   const scriptTag = document.querySelector('#recart-landing-loader-script')
   const queryParams = scriptTag.src.split('?')[1]
+  console.log(queryParams)
 
   const script = document.createElement('script')
   script.id = id
