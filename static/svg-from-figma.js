@@ -30,10 +30,12 @@
   script.async = true
   document.body.appendChild(script)
 
-  // TODO actualize for more themes
-  const sectionHeader = document.querySelector('.section-header')
-  if (sectionHeader) {
-    sectionHeader.style.display = 'none'
+  const headers = window.document.getElementsByTagName('h1')
+  for (const header of headers) {
+    if (document.title.includes(header.textContent.trim())) {
+      header.style.display = 'none'
+      break
+    }
   }
 
   loaderDiv.innerHTML = htmlTemplate
