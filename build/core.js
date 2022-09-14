@@ -1,25 +1,2 @@
-/*! RECART 89f1010 2022-04-28T15:27:01.842Z */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-var __webpack_exports__ = {};
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-/******/ })()
-;
+/*! For license information please see core.js.LICENSE.txt */
+(()=>{"use strict";var __webpack_modules__={"./app/scss/core.scss":(__unused_webpack_module,__webpack_exports__,__webpack_require__)=>{eval('__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n// extracted by mini-css-extract-plugin\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});\n\n//# sourceURL=webpack://@ghostmonitor/gm-tracking-js/./app/scss/core.scss?')}},__webpack_require__={d:(_,e)=>{for(var r in e)__webpack_require__.o(e,r)&&!__webpack_require__.o(_,r)&&Object.defineProperty(_,r,{enumerable:!0,get:e[r]})},o:(_,e)=>Object.prototype.hasOwnProperty.call(_,e),r:_=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(_,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(_,"__esModule",{value:!0})}},__webpack_exports__={};__webpack_modules__["./app/scss/core.scss"](0,__webpack_exports__,__webpack_require__)})();
