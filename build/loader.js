@@ -8,6 +8,7 @@
     'gm-tracking-js-gabor.ngrok.io' :
     'gabor-recart.github.io/build'
 
+  console.log(`Loading script from: ${domain}`)
 
   let o = e.body
   landingPageRoot = e.getElementById('recart-landing-page-root'), landingPageRoot && (o = landingPageRoot)
